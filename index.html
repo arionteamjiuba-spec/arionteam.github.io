@@ -139,9 +139,22 @@
             position: relative;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             border-radius: 4px;
+            gap: 15px;
+        }
+        .partner-box img {
+            max-width: 80%;
+            height: auto;
+            max-height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* Deixa a logo branca para combinar com o tema */
+            transition: 0.3s;
+        }
+        .partner-box:hover img {
+            filter: none; /* Volta a cor original no hover */
         }
         .partner-box:hover { 
             border-color: var(--red); 
@@ -183,7 +196,7 @@
 
     <header>
         <a href="#" class="logo-main">
-            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true">
+            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" width="55">
             <div><span style="display: block; font-weight: bold; letter-spacing: 2px;">ARION TEAM</span></div>
         </a>
         <div class="nav-container">
@@ -207,7 +220,7 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true">
+            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" width="180">
             <h1>A EXCELÊNCIA É O HÁBITO. <br> <span>A VITÓRIA É O DESTINO.</span></h1>
             <a href="https://wa.me/5571983698558" style="background: var(--red); color: #fff; padding: 18px 50px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; border-radius: 2px; display: inline-block; letter-spacing: 3px; box-shadow: var(--glow);">INICIAR TREINOS</a>
         </div>
@@ -335,6 +348,7 @@
                     <li><span><i class="fas fa-fist-raised"></i> Boxe</span> <strong>R$ 80,00</strong></li>
                     <li><span><i class="fas fa-bolt"></i> Kickboxing</span> <strong>R$ 80,00</strong></li>
                     <li><span><i class="fas fa-medal"></i> Judô</span> <strong>R$ 100,00</strong></li>
+					<li><span><i class="fas fa-medal"></i> Judô/Sábado (15h30 ás 17h)</span> <strong>R$ 60,00</strong></li>
                     <li><span><i class="fas fa-user-ninja"></i> Hapkido</span> <strong>R$ 100,00</strong></li>
                 </ul>
                 <a href="https://wa.me/5571983698558" style="background: var(--red); color: #fff; padding: 15px 25px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-top: 10px; letter-spacing: 2px;">ALISTAR-SE</a>
@@ -403,9 +417,18 @@
     <section id="parceiros">
         <h2 class="section-title">PARCEIROS <span>DA EQUIPE</span></h2>
         <div class="partners-grid">
-            <div class="partner-box">ARMOR FIGHTWEAR</div>
-            <div class="partner-box">MAX MUSCLE</div>
-            <div class="partner-box">SANGUE BJJ</div>
+            <div class="partner-box">
+                <img src="https://github.com/arionteamjiuba-spec/logo-1/blob/main/ChatGPT_Image_23_de_fev._de_2026__16_44_04-removebg-preview.png?raw=true" alt="Logo Armor Fightwear">
+                DIVINO SUSHI
+            </div>
+            <div class="partner-box">
+                <img src="https://github.com/arionteamjiuba-spec/parceiro-2/blob/main/ChatGPT_Image_23_de_fev._de_2026__16_41_24-removebg-preview.png?raw=true" alt="Logo Max Muscle">
+                CANTIM DA ROÇA
+            </div>
+            <div class="partner-box">
+                <img src="https://github.com/arionteamjiuba-spec/PARCEIRO-3/blob/main/Logo_do_Centro_Educacional_Silva_N%C3%A9ry-removebg-preview.png?raw=true" alt="Logo Sangue BJJ">
+                CENTRO EDUCACIONAL SILVA NÉRY
+            </div>
         </div>
     </section>
 
@@ -444,9 +467,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
