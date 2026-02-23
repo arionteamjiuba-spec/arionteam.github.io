@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARION TEAM | EXCELÊNCIA E DOMÍNIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --red: #ff0000;
+            --black: #050505;
+            --gray: #111111;
+            --glow: 0 0 25px rgba(255, 0, 0, 0.6);
+            --whatsapp: #25d366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--black); color: #fff; font-family: 'Oswald', sans-serif; overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(0, 0, 0, 0.95); padding: 10px 5%; position: fixed; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--red);
+        }
+        .logo-main { display: flex; align-items: center; gap: 15px; text-decoration: none; color: #fff; }
+        .logo-img { width: 55px; height: auto; filter: drop-shadow(var(--glow)); transition: 0.3s; }
+        .nav-container { display: flex; align-items: center; gap: 30px; }
+        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: #fff; font-family: 'Syncopate', sans-serif; font-size: 0.6rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--red); }
+        .flags img { width: 28px; height: auto; margin-left: 10px; filter: contrast(1.2); }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: url('https://clubepaineiras.org.br/wp-content/uploads/2022/09/jiu-jitsu_2.jpg') no-repeat center center/cover;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.95) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 20px; }
+        .hero-logo-large { width: 180px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,0,0,0.4)); animation: fadeInDown 1.2s ease-out; }
+        .hero h1 { font-size: clamp(1.8rem, 6vw, 4rem); font-family: 'Syncopate', sans-serif; line-height: 1.1; margin-bottom: 30px; }
+        .hero h1 span { color: var(--red); text-shadow: var(--glow); }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- SEÇÕES --- */
+        section { padding: 80px 8%; position: relative; }
+        .section-title { font-family: 'Syncopate', sans-serif; font-size: 1.8rem; margin-bottom: 40px; border-left: 6px solid var(--red); padding-left: 20px; text-transform: uppercase; }
+
+        /* --- VIDEO SECTION --- */
+        .video-container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            border: 2px solid #222; 
+            box-shadow: var(--glow); 
+            line-height: 0; 
+            background: #000;
+        }
+        video { width: 100%; height: auto; }
+
+        /* --- DESIGN CRONOGRAMA --- */
+        .cronograma-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
+        .turno-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 25px; border-radius: 4px; transition: 0.3s; }
+        .turno-card:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
+        .turno-card h3 { font-family: 'Syncopate'; font-size: 1rem; color: var(--red); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .aula-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #151515; }
+        .aula-row:last-child { border-bottom: none; }
+        .horario { font-weight: bold; font-size: 1.2rem; color: #fff; min-width: 70px; }
+        .desc-aula { flex-grow: 1; margin-left: 20px; }
+        .tipo-aula { display: block; font-size: 0.9rem; color: #ddd; text-transform: uppercase; letter-spacing: 1px; }
+        .dias-aula { display: block; font-size: 0.7rem; color: var(--red); font-family: 'Syncopate'; margin-top: 4px; }
+
+        /* --- PLANOS --- */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .pricing-card { background: #111; padding: 40px 30px; border: 1px solid #222; text-align: center; transition: 0.5s; position: relative; overflow: hidden; }
+        .pricing-card.featured { border-color: var(--red); box-shadow: var(--glow); transform: scale(1.05); z-index: 2; }
+        .pricing-card h3 { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; margin-bottom: 15px; }
+        .pricing-card .price { font-size: 3rem; font-weight: bold; color: var(--red); margin-bottom: 10px; }
+        .pricing-card .price span { font-size: 1rem; color: #666; }
+        .pricing-card ul { list-style: none; margin: 25px 0; color: #aaa; font-size: 0.9rem; line-height: 2; }
+        .pricing-card ul li i { color: var(--red); margin-right: 8px; }
+        .badge { background: var(--red); color: #fff; font-family: 'Syncopate'; font-size: 0.5rem; padding: 5px 15px; position: absolute; top: 15px; right: -25px; transform: rotate(45deg); width: 100px; }
+
+        /* --- INFO CARDS --- */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-card { background: var(--gray); padding: 40px; border: 1px solid #222; text-align: center; transition: 0.4s; }
+        .info-card:hover { border-color: var(--red); transform: translateY(-5px); }
+        .info-card i { font-size: 3.5rem; color: var(--red); margin-bottom: 20px; display: block; }
+        .info-card h3 { font-family: 'Syncopate', sans-serif; color: var(--red); margin-bottom: 15px; }
+
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .benefit-item { background: #080808; padding: 30px; border-bottom: 2px solid #222; transition: 0.3s; }
+        .benefit-item:hover { border-bottom-color: var(--red); background: #0d0d0d; }
+        .benefit-item i { color: var(--red); font-size: 1.8rem; margin-bottom: 15px; display: block; }
+
+        /* --- CALENDÁRIO --- */
+        .calendars-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .calendar-live { background: #111; padding: 25px; border-radius: 4px; border: 1px solid #222; }
+        .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+        .day { padding: 10px; background: #050505; color: #444; font-size: 0.8rem; }
+        .day.today { background: var(--red); color: #fff; font-weight: bold; box-shadow: var(--glow); }
+        .day.active { color: #fff; }
+        .event-row { background: #111; padding: 15px; margin-bottom: 8px; border-left: 4px solid var(--red); display: flex; justify-content: space-between; font-size: 0.9rem; }
+
+        /* --- GALERIA (AJUSTADA) --- */
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            grid-template-rows: repeat(2, 150px); 
+            gap: 5px; 
+        }
+        .photo { background-size: cover; background-position: center; filter: grayscale(1); transition: 0.5s; border: 1px solid #222; }
+        .photo:hover { filter: grayscale(0); transform: scale(1.05); z-index: 5; border-color: var(--red); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+
+        /* --- PARCEIROS (DESTACADO) --- */
+        .partners-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 20px; 
+        }
+        .partner-box { 
+            background: linear-gradient(145deg, #111, #050505);
+            border: 1px solid #333; 
+            padding: 30px 20px; 
+            text-align: center; 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: 0.7rem; 
+            color: #fff; 
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        .partner-box:hover { 
+            border-color: var(--red); 
+            color: var(--red);
+            box-shadow: var(--glow);
+            transform: translateY(-5px);
+            background: #000;
+        }
+        .partner-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,0,0,0.1), transparent);
+            transition: 0.5s;
+        }
+        .partner-box:hover::before { left: 100%; }
+
+        /* --- FOOTER --- */
+        .footer-premium { background: #020202; border-top: 3px solid var(--red); padding: 80px 8% 40px; }
+        .footer-main-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { font-family: 'Syncopate', sans-serif; font-size: 0.8rem; color: var(--red); margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-col p, .footer-col a { color: #888; text-decoration: none; font-size: 0.85rem; margin-bottom: 12px; display: block; }
+        .footer-col i { color: var(--red); margin-right: 10px; }
+        .map-box { height: 180px; border: 1px solid #222; filter: grayscale(1) invert(1) contrast(1.2); }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--whatsapp); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); animation: pulse 2s infinite; text-decoration: none; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(0,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+
+        @media (max-width: 1000px) {
+            .footer-main-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 120px); }
+            .nav-menu, .flags { display: none; }
+            .hero-logo-large { width: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-main">
+            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/Gemini_Generated_Image_tbq88ttbq88ttbq8__1_-removebg-preview.png?raw=true" alt="Arion Team Logo" class="logo-img">
+            <div><span style="display: block; font-weight: bold; letter-spacing: 2px;">ARION TEAM</span></div>
+        </a>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#historia">PILARES</a></li>
+                <li><a href="#beneficios">BENEFÍCIOS</a></li>
+                <li><a href="#video-treino">VÍDEO</a></li>
+                <li><a href="#horarios">CRONOGRAMA</a></li>
+                <li><a href="#planos">PLANOS</a></li>
+                <li><a href="#calendario">CALENDÁRIO</a></li>
+                <li><a href="#galeria">GALERIA</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+            <div class="flags">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bandeira_da_Bahia.svg/250px-Bandeira_da_Bahia.svg.png">
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="https://github.com/brunoluissantos7-netizen/logo-arion-tem-alta-defini-o-sem-fundo/blob/main/Gemini_Generated_Image_tbq88ttbq88ttbq8-removebg-preview.png?raw=true" alt="Arion Team" class="hero-logo-large">
+            <h1>A EXCELÊNCIA É O HÁBITO. <br> <span>A VITÓRIA É O DESTINO.</span></h1>
+            <a href="https://wa.me/5571999999999" style="background: var(--red); color: #fff; padding: 18px 50px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; border-radius: 2px; display: inline-block; letter-spacing: 3px; box-shadow: var(--glow);">INICIAR TREINOS</a>
+        </div>
+    </section>
+
+    <section id="video-treino" style="background: #000;">
+        <h2 class="section-title">O CAMINHO DO <span>GUERREIRO</span></h2>
+        <div class="video-container">
+            <video controls poster="https://github.com/brunoluissantos7-netizen/video-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2011_01_20.png?raw=true">
+                <source src="LINK_DO_VIDEO_AQUI?raw=true" type="video/mp4">
+                Seu navegador não suporta vídeos em HTML5.
+            </video>
+        </div>
+    </section>
+
+    <section id="horarios">
+        <h2 class="section-title">CRONOGRAMA DE <span>COMBATE</span></h2>
+        <div class="cronograma-wrapper">
+            <div class="turno-card">
+                <h3><i class="fas fa-sun"></i> TURNO MANHÃ</h3>
+                <div class="aula-row">
+                    <span class="horario">07:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Adulto</span>
+                        <span class="dias-aula">Seg • Qua • Sex</span>
+                    </div>
+                </div>
+                <div class="aula-row">
+                    <span class="horario">08:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Adulto</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
+                </div>
+                <div class="aula-row">
+                    <span class="horario">09:30</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu (Turma B)</span>
+                        <span class="dias-aula">Seg • Qua • Sex</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="turno-card">
+                <h3><i class="fas fa-cloud-sun"></i> TURNO TARDE</h3>
+                <div class="aula-row">
+                    <span class="horario">16:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Kids</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
+                </div>
+                <div class="aula-row">
+                    <span class="horario">17:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Adulto</span>
+                        <span class="dias-aula">Seg • Qua • Sex</span>
+                    </div>
+                </div>
+                <div class="aula-row">
+                    <span class="horario">18:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Adulto</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="turno-card">
+                <h3><i class="fas fa-moon"></i> TURNO NOITE</h3>
+                <div class="aula-row">
+                    <span class="horario">19:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Jiu-Jitsu Kids</span>
+                        <span class="dias-aula">Seg • Qua • Sex</span>
+                    </div>
+                </div>
+                <div class="aula-row">
+                    <span class="horario">20:00</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Treino Oficial</span>
+                        <span class="dias-aula">Segunda a Sexta</span>
+                    </div>
+                </div>
+                <div class="aula-row" style="border-color: var(--red);">
+                    <span class="horario">21:30</span>
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Avançado / No-Gi</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" style="background: #080808;">
+        <h2 class="section-title">PLANOS DE <span>BATALHA</span></h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>MATRÍCULA</h3>
+                <div class="price">R$ 50</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Registro de Atleta</li>
+                    <li><i class="fas fa-check"></i> Carteira Oficial</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="badge">FOCO</div>
+                <h3>MENSALIDADE</h3>
+                <div class="price">R$ 100<span>/mês</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Treinos Ilimitados</li>
+                    <li><i class="fas fa-check"></i> Metodologia Arion</li>
+                    <li><i class="fas fa-check"></i> Acesso Total</li>
+                </ul>
+                <a href="https://wa.me/5571999999999" style="background: var(--red); color: #fff; padding: 12px 25px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; display: inline-block;">ALISTAR-SE</a>
+            </div>
+            <div class="pricing-card">
+                <h3>KIDS</h3>
+                <div class="price">R$ 90<span>/mês</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Disciplina Martial</li>
+                    <li><i class="fas fa-check"></i> Turmas Específicas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="historia">
+        <h2 class="section-title">NOSSA <span>ESSÊNCIA</span></h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-user-ninja"></i>
+                <h3>TRADIÇÃO</h3>
+                <p>Fabrica de talentos, a Arion Team é o epicentro do BJJ de elite na região.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-fist-raised"></i>
+                <h3>DOMÍNIO ABSOLUTO</h3>
+                <p>Treinamos para que sua mente controle o corpo e sua técnica anule qualquer força bruta.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" style="background: #080808;">
+        <h2 class="section-title">O PODER DO <span>JIU-JITSU</span></h2>
+        <div class="benefits-grid">
+            <div class="benefit-item"><i class="fas fa-shield-alt"></i><h4>DEFESA REAL</h4><p>Eficiência para situações reais.</p></div>
+            <div class="benefit-item"><i class="fas fa-brain"></i><h4>DISCIPLINA</h4><p>Foco mental absoluto.</p></div>
+            <div class="benefit-item"><i class="fas fa-fire"></i><h4>PERFORMANCE</h4><p>Condicionamento físico de elite.</p></div>
+            <div class="benefit-item"><i class="fas fa-handshake"></i><h4>IRMANDADE</h4><p>Lealdade como mandamento.</p></div>
+        </div>
+    </section>
+
+    <section id="calendario">
+        <h2 class="section-title">MISSÃO <span>DIÁRIA</span></h2>
+        <div class="calendars-wrapper">
+            <div class="calendar-live">
+                <p style="color: var(--red); font-family: 'Syncopate'; font-size: 0.7rem; margin-bottom: 20px; text-align: center;">FEVEREIRO 2026</p>
+                <div class="days-grid">
+                    <div class="day">D</div><div class="day">S</div><div class="day">T</div><div class="day">Q</div><div class="day">Q</div><div class="day">S</div><div class="day">S</div>
+                    <div class="day active">15</div><div class="day active">16</div><div class="day active">17</div><div class="day active">18</div><div class="day active">19</div>
+                    <div class="day today">20</div><div class="day active">21</div><div class="day active">22</div><div class="day active">23</div><div class="day active">24</div>
+                </div>
+            </div>
+            <div>
+                <div class="event-row"><div><strong>FEV</strong> - COPA VERÃO</div><span style="color: #25d366;">OURO</span></div>
+                <div class="event-row"><div><strong>MAR</strong> - OPEN SALVADOR</div><span style="color: var(--red);">MISSÃO</span></div>
+                 <div class="event-row"><div><strong>ABRIL</strong> - COPA SALVADOR</div><span style="color: #25d366;">PRATA</span></div>
+                 <div class="event-row"><div><strong>ABRIL</strong> - COPA NORDESTE</div><span style="color: #25d366;">PRATA</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" style="background: #080808;">
+        <h2 class="section-title">ESTILO DE <span>VIDA</span></h2>
+        <div class="gallery-grid">
+            <div class="photo" style="background-image: url('https://github.com/brunoluissantos7-netizen/foto-arion-tem-01/blob/main/Captura%20de%20tela%202026-02-23%20081424.png?raw=true');"></div>
+            <div class="photo" style="background-image: url('https://github.com/brunoluissantos7-netizen/arion-team-2-foto/blob/main/Captura%20de%20tela%202026-02-23%20081458.png?raw=true');"></div>
+            <div class="photo" style="background-image: url('https://github.com/brunoluissantos7-netizen/arion-team-3-foto/blob/main/Captura%20de%20tela%202026-02-23%20081516.png?raw=true');"></div>
+            <div class="photo" style="background-image: url('https://github.com/brunoluissantos7-netizen/arion-team-4-foto/blob/main/Captura%20de%20tela%202026-02-23%20081625.png?raw=true');"></div>
+            <div class="photo" style="background-image: url('https://github.com/brunoluissantos7-netizen/arion-team-5-foto/blob/main/Captura%20de%20tela%202026-02-23%20085732.png?raw=true');"></div>
+        </div>
+    </section>
+
+    <section id="parceiros">
+        <h2 class="section-title">PARCEIROS <span>DA EQUIPE</span></h2>
+        <div class="partners-grid">
+            <div class="partner-box">ARMOR FIGHTWEAR</div>
+            <div class="partner-box">MAX MUSCLE</div>
+            <div class="partner-box">SANGUE BJJ</div>
+        </div>
+    </section>
+
+    <footer id="contato" class="footer-premium">
+        <div class="footer-main-grid">
+            <div class="footer-col">
+                <h4>ARION TEAM BJJ</h4>
+                <p>📍| Av. Rivaldo Gomes Guimarães, 653 - Nucleo Hab. Rubens Costa Cia I, Simões Filho - BA. Formando campeões.</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://www.facebook.com/profile.php?id=100069380591565"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://www.instagram.com/arionteam_bahia/"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>ENDEREÇO</h4>
+                <p><i class="fas fa-map-marker-alt"></i> CIA 1, Quadra 5</p>
+            </div>
+            <div class="footer-col">
+                <h4>CONTATO</h4>
+                <a href="tel:71999999999"><i class="fas fa-phone"></i> (71) 99999-9999</a>
+            </div>
+            <div class="footer-col">
+                <div class="map-box">
+                    <iframe src="https://www.google.com/maps?q=-12.8089751,-38.397649&hl=pt-BR&z=17&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 30px; color: #444; font-size: 0.7rem; font-family: 'Syncopate';">
+            OSS! © 2026 ARION TEAM - DESIGNED FOR WARRIORS.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5571999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
