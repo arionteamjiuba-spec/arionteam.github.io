@@ -6,230 +6,387 @@
     <title>ARION TEAM | EXCELÊNCIA E DOMÍNIO</title>
     <link rel="icon" type="image/png" href="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true">
     
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --red: #ff0000;
+            --red-glow: rgba(255, 0, 0, 0.5);
             --black: #050505;
             --gray: #111111;
-            --glow: 0 0 25px rgba(255, 0, 0, 0.6);
+            --light-gray: #1a1a1a;
+            --glow: 0 0 25px var(--red-glow);
             --whatsapp: #25d366;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--black); color: #fff; font-family: 'Oswald', sans-serif; overflow-x: hidden; }
-
-        /* --- HEADER --- */
-        header {
-            background: rgba(0, 0, 0, 0.95); padding: 10px 5%; position: fixed; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--red);
+        
+        body { 
+            background-color: var(--black); 
+            color: #fff; 
+            font-family: 'Oswald', sans-serif; 
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        .logo-main { display: flex; align-items: center; gap: 15px; text-decoration: none; color: #fff; }
-        .logo-img { width: 55px; height: auto; filter: drop-shadow(var(--glow)); transition: 0.3s; }
-        .nav-container { display: flex; align-items: center; gap: 30px; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #fff; font-family: 'Syncopate', sans-serif; font-size: 0.6rem; letter-spacing: 1px; transition: 0.3s; }
-        .nav-menu a:hover { color: var(--red); }
-        .flags img { width: 28px; height: auto; margin-left: 10px; filter: contrast(1.2); }
 
-        /* Efeito Especial Destaque no Menu */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+
+        /* --- HEADER MODERNO --- */
+        header {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .logo-main { display: flex; align-items: center; gap: 15px; text-decoration: none; color: #fff; }
+        .logo-img { width: 50px; height: auto; filter: drop-shadow(0 0 8px var(--red)); transition: var(--transition); }
+        .logo-main:hover .logo-img { transform: scale(1.1) rotate(5deg); }
+
+        .nav-container { display: flex; align-items: center; gap: 30px; }
+        .nav-menu { display: flex; list-style: none; gap: 15px; align-items: center; }
+        
+        .nav-menu a { 
+            text-decoration: none; 
+            color: rgba(255,255,255,0.7); 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: 0.55rem; 
+            letter-spacing: 2px; 
+            transition: var(--transition);
+            padding: 8px 12px;
+            position: relative;
+        }
+
+        .nav-menu a:hover { color: var(--red); }
+        .nav-menu a::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px;
+            background: var(--red); transition: var(--transition); transform: translateX(-50%);
+        }
+        .nav-menu a:hover::after { width: 80%; }
+
         .nav-menu .destaque-link {
             color: var(--red);
             border: 1px solid var(--red);
-            padding: 5px 10px;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            border-radius: 2px;
             animation: glow-pulse 2s infinite;
         }
+
         @keyframes glow-pulse {
-            0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); text-shadow: 0 0 2px var(--red); }
-            50% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); text-shadow: 0 0 8px var(--red); }
-            100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); text-shadow: 0 0 2px var(--red); }
+            0%, 100% { box-shadow: 0 0 5px var(--red-glow); transform: scale(1); }
+            50% { box-shadow: 0 0 15px var(--red-glow); transform: scale(1.02); }
         }
 
-        /* --- HERO --- */
+        .flags { display: flex; gap: 8px; }
+        .flags img { width: 22px; height: auto; border-radius: 2px; opacity: 0.8; transition: 0.3s; }
+        .flags img:hover { opacity: 1; transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
         .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: url('https://github.com/arionteamjiuba-spec/capa-do-site-arion-team/blob/main/ChatGPT%20Image%2024%20de%20fev.%20de%202026,%2008_16_54%20(1).png?raw=true') no-repeat center center/cover;
+            overflow: hidden;
         }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0%; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.95) 120%);
-        }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 700px; padding: 20px; }
-        .hero-logo-large { width: 180px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,0,0,0.4)); animation: fadeInDown 1.2s ease-out; }
-        .hero h1 { font-size: clamp(1.8rem, 6vw, 4rem); font-family: 'Syncopate', sans-serif; line-height: 1.1; margin-bottom: 30px; }
-        .hero h1 span { color: var(--red); text-shadow: var(--glow); }
 
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, var(--black) 95%);
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 20px; }
+        
+        .hero-logo-large { 
+            width: 160px; 
+            margin-bottom: 30px; 
+            filter: drop-shadow(0 0 20px rgba(255,0,0,0.5));
+            animation: float 4s ease-in-out infinite; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 { 
+            font-size: clamp(1.5rem, 8vw, 3.5rem); 
+            font-family: 'Syncopate', sans-serif; 
+            line-height: 1.2; 
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        .hero h1 span { 
+            color: var(--red); 
+            display: block;
+            margin-top: 10px;
+            text-shadow: 0 0 30px var(--red-glow);
+        }
+
+        .btn-main {
+            background: var(--red);
+            color: #fff;
+            padding: 20px 45px;
+            text-decoration: none;
+            font-family: 'Syncopate';
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            letter-spacing: 4px;
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .btn-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,0,0,0.5);
+            background: #cc0000;
+        }
 
         /* --- SEÇÕES --- */
-        section { padding: 80px 8%; position: relative; }
-        .section-title { font-family: 'Syncopate', sans-serif; font-size: 1.8rem; margin-bottom: 40px; border-left: 6px solid var(--red); padding-left: 20px; text-transform: uppercase; }
-
-        /* --- FOTO DESTAQUE DO MÊS --- */
-        .destaque-do-mes { text-align: center; background: #000; padding-top: 100px; }
-        .destaque-frame {
-            max-width: 600px;
-            margin: 0 auto;
-            border: 3px solid #1a1a1a;
-            position: relative;
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
-            transition: 0.5s;
+        section { padding: 100px 10%; position: relative; }
+        .section-title { 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: 1.5rem; 
+            margin-bottom: 60px; 
+            border-left: 5px solid var(--red); 
+            padding-left: 25px; 
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
-        .destaque-frame:hover { border-color: var(--red); box-shadow: var(--glow); }
-        .destaque-frame img { width: 100%; height: auto; display: block; filter: contrast(1.1); }
+        .section-title span { color: var(--red); }
+
+        /* --- DESTAQUE DO MÊS --- */
+        .destaque-do-mes { background: var(--black); }
+        .destaque-frame {
+            max-width: 550px;
+            margin: 0 auto;
+            border: 1px solid var(--light-gray);
+            position: relative;
+            padding: 10px;
+            background: var(--light-gray);
+            transition: var(--transition);
+        }
+        .destaque-frame:hover { border-color: var(--red); box-shadow: var(--glow); transform: scale(1.02); }
+        .destaque-frame img { width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1); }
+        
         .destaque-label {
             background: var(--red);
             color: white;
             font-family: 'Syncopate';
-            font-size: 0.8rem;
-            padding: 10px 20px;
+            font-size: 0.7rem;
+            padding: 12px 30px;
             position: absolute;
-            bottom: -20px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            white-space: nowrap;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        /* --- VIDEO/IMAGE SECTION --- */
+        /* --- VIDEO/IMAGE --- */
         .video-container { 
-            max-width: 1000px; 
+            max-width: 1100px; 
             margin: 0 auto; 
-            border: 2px solid #222; 
-            box-shadow: var(--glow); 
-            line-height: 0; 
-            background: #000;
+            border: 1px solid var(--light-gray);
+            overflow: hidden;
+            border-radius: 4px;
         }
-        .featured-img { width: 100%; height: auto; display: block; }
+        .featured-img { width: 100%; height: auto; display: block; transition: 0.8s; }
+        .video-container:hover .featured-img { transform: scale(1.03); }
 
-        /* --- DESIGN CRONOGRAMA --- */
-        .cronograma-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
-        .turno-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 25px; border-radius: 4px; transition: 0.3s; }
-        .turno-card:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
-        .turno-card h3 { font-family: 'Syncopate'; font-size: 1rem; color: var(--red); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .aula-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #151515; }
-        .aula-row:last-child { border-bottom: none; }
-        .horario { font-weight: bold; font-size: 1rem; color: #fff; min-width: 100px; }
-        .desc-aula { flex-grow: 1; margin-left: 20px; }
-        .tipo-aula { display: block; font-size: 0.9rem; color: #ddd; text-transform: uppercase; letter-spacing: 1px; }
-        .dias-aula { display: block; font-size: 0.7rem; color: var(--red); font-family: 'Syncopate'; margin-top: 4px; }
+        /* --- CRONOGRAMA --- */
+        .cronograma-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .turno-card { 
+            background: linear-gradient(145deg, #0a0a0a, #111); 
+            border: 1px solid var(--light-gray); 
+            padding: 35px; 
+            border-radius: 8px; 
+            transition: var(--transition); 
+        }
+        .turno-card:hover { border-color: rgba(255,0,0,0.4); transform: translateY(-10px); }
+        .turno-card h3 { font-family: 'Syncopate'; font-size: 0.9rem; color: var(--red); margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        
+        .aula-row { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 18px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
+        .horario { font-weight: 700; color: #fff; font-size: 1.1rem; }
+        .tipo-aula { color: #fff; font-size: 0.9rem; font-weight: 400; text-transform: uppercase; }
+        .dias-aula { display: block; font-size: 0.65rem; color: var(--red); font-family: 'Syncopate'; margin-top: 5px; opacity: 0.8; }
 
         /* --- PLANOS --- */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .pricing-card { background: #111; padding: 40px 30px; border: 1px solid #222; text-align: center; transition: 0.5s; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
-        .pricing-card.featured { border-color: var(--red); box-shadow: var(--glow); transform: scale(1.05); z-index: 2; }
-        .pricing-card h3 { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; margin-bottom: 15px; }
-        .pricing-card .price { font-size: 3rem; font-weight: bold; color: var(--red); margin-bottom: 10px; }
-        .pricing-card .price span { font-size: 1rem; color: #666; }
-        .pricing-card ul { list-style: none; margin: 25px 0; color: #aaa; font-size: 0.9rem; line-height: 2; text-align: left; }
-        .pricing-card ul li { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 5px 0; }
-        .pricing-card ul li i { color: var(--red); margin-right: 8px; }
-        .badge { background: var(--red); color: #fff; font-family: 'Syncopate'; font-size: 0.5rem; padding: 5px 15px; position: absolute; top: 15px; right: -25px; transform: rotate(45deg); width: 100px; }
-
-        /* --- INFO CARDS --- */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .info-card { background: var(--gray); padding: 40px; border: 1px solid #222; text-align: center; transition: 0.4s; }
-        .info-card:hover { border-color: var(--red); transform: translateY(-5px); }
-        .info-card i { font-size: 3.5rem; color: var(--red); margin-bottom: 20px; display: block; }
-        .info-card h3 { font-family: 'Syncopate', sans-serif; color: var(--red); margin-bottom: 15px; }
-
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .benefit-item { background: #080808; padding: 30px; border-bottom: 2px solid #222; transition: 0.3s; }
-        .benefit-item:hover { border-bottom-color: var(--red); background: #0d0d0d; }
-        .benefit-item i { color: var(--red); font-size: 1.8rem; margin-bottom: 15px; display: block; }
-
-        /* --- CALENDÁRIO --- */
-        .calendars-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .calendar-live { background: #111; padding: 25px; border-radius: 4px; border: 1px solid #222; }
-        .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
-        .day { padding: 10px; background: #050505; color: #444; font-size: 0.8rem; }
-        .day.today { background: var(--red); color: #fff; font-weight: bold; box-shadow: var(--glow); }
-        .day.active { color: #fff; }
-        .event-row { background: #111; padding: 15px; margin-bottom: 8px; border-left: 4px solid var(--red); display: flex; justify-content: space-between; font-size: 0.9rem; }
-
-        /* --- GALERIA --- */
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            grid-template-rows: repeat(2, 150px); 
-            gap: 5px; 
-        }
-        .photo { background-size: cover; background-position: center center 20%; filter: grayscale(1); transition: 0.5s; border: 1px solid #222; }
-        .photo:hover { filter: grayscale(0); transform: scale(1.05); z-index: 5; border-color: var(--red); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
-
-        /* --- PARCEIROS --- */
-        .partners-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-            gap: 20px; 
-        }
-        .partner-box { 
-            background: linear-gradient(145deg, #111, #050505);
-            border: 1px solid #333; 
-            padding: 30px 20px; 
+        .pricing-grid { max-width: 600px; margin: 0 auto; }
+        .pricing-card { 
+            background: #0d0d0d; 
+            padding: 50px 40px; 
+            border: 1px solid var(--light-gray); 
             text-align: center; 
-            font-family: 'Syncopate', sans-serif; 
-            font-size: 0.7rem; 
-            color: #fff; 
-            letter-spacing: 2px;
-            transition: 0.4s;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            gap: 15px;
         }
-        .partner-box img {
-            max-width: 80%;
-            height: auto;
-            max-height: 60px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
+        .pricing-card.featured { border-color: var(--red); box-shadow: var(--glow); }
+        .pricing-card h3 { font-family: 'Syncopate'; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 1px; }
+        
+        .pricing-card ul { list-style: none; margin: 30px 0; text-align: left; }
+        .pricing-card ul li { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+        .pricing-card ul li i { color: var(--red); margin-right: 10px; }
+        .pricing-card strong { color: var(--red); font-size: 1.1rem; }
+
+        .badge { 
+            background: var(--red); 
+            color: #fff; 
+            font-family: 'Syncopate'; 
+            font-size: 0.5rem; 
+            padding: 8px 0; 
+            position: absolute; 
+            top: 20px; 
+            right: -30px; 
+            transform: rotate(45deg); 
+            width: 120px; 
+            font-weight: bold;
+        }
+
+        /* --- INFO & BENEFITS --- */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .info-card { 
+            background: #0a0a0a; 
+            padding: 50px 30px; 
+            border: 1px solid var(--light-gray); 
+            text-align: center; 
+            transition: var(--transition);
+        }
+        .info-card:hover { border-color: var(--red); background: #0f0f0f; }
+        .info-card i { font-size: 3rem; color: var(--red); margin-bottom: 25px; display: block; }
+        .info-card h3 { font-family: 'Syncopate'; color: #fff; margin-bottom: 15px; font-size: 1rem; }
+
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .benefit-item { 
+            background: #080808; 
+            padding: 35px 25px; 
+            border-top: 3px solid var(--light-gray); 
+            transition: var(--transition);
+            text-align: center;
+        }
+        .benefit-item:hover { border-top-color: var(--red); background: #111; transform: translateY(-5px); }
+        .benefit-item i { color: var(--red); font-size: 2rem; margin-bottom: 15px; display: block; }
+        .benefit-item h4 { font-family: 'Syncopate'; font-size: 0.75rem; margin-bottom: 10px; }
+
+        /* --- CALENDÁRIO --- */
+        .calendars-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .calendar-live { background: #0a0a0a; padding: 30px; border-radius: 8px; border: 1px solid var(--light-gray); }
+        .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
+        .day { padding: 12px 5px; background: #050505; color: #444; font-size: 0.8rem; border-radius: 4px; }
+        .day.today { background: var(--red); color: #fff; font-weight: bold; box-shadow: 0 0 15px var(--red-glow); }
+        .day.active { color: #fff; }
+
+        .event-row { 
+            background: #0a0a0a; 
+            padding: 20px; 
+            margin-bottom: 10px; 
+            border-left: 4px solid var(--red); 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.85rem; 
             transition: 0.3s;
         }
-        .partner-box:hover img {
-            filter: none;
-        }
-        .partner-box:hover { 
-            border-color: var(--red); 
-            color: var(--red);
-            box-shadow: var(--glow);
-            transform: translateY(-5px);
-            background: #000;
-        }
-        .partner-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,0,0,0.1), transparent);
-            transition: 0.5s;
-        }
-        .partner-box:hover::before { left: 100%; }
+        .event-row:hover { background: #111; transform: translateX(5px); }
 
-        /* --- FOOTER --- */
-        .footer-premium { background: #020202; border-top: 3px solid var(--red); padding: 80px 8% 40px; }
-        .footer-main-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; margin-bottom: 50px; }
-        .footer-col h4 { font-family: 'Syncopate', sans-serif; font-size: 0.8rem; color: var(--red); margin-bottom: 25px; letter-spacing: 1px; }
-        .footer-col p, .footer-col a { color: #888; text-decoration: none; font-size: 0.85rem; margin-bottom: 12px; display: block; }
-        .footer-col i { color: var(--red); margin-right: 10px; }
-        .map-box { height: 180px; border: 1px solid #222; filter: grayscale(1) invert(1) contrast(1.2); }
+        /* --- GALERIA MODERNA --- */
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            grid-auto-rows: 200px;
+            gap: 10px; 
+        }
+        .photo { 
+            background-size: cover; 
+            background-position: center; 
+            filter: grayscale(1) brightness(0.7); 
+            transition: var(--transition); 
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .photo:hover { filter: grayscale(0) brightness(1); transform: scale(1.02); z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--whatsapp); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); animation: pulse 2s infinite; text-decoration: none; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(0,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+        /* --- PARCEIROS --- */
+        .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .partner-box { 
+            background: #0a0a0a;
+            border: 1px solid var(--light-gray); 
+            padding: 40px 20px; 
+            text-align: center; 
+            font-family: 'Syncopate'; 
+            font-size: 0.6rem; 
+            letter-spacing: 2px;
+            transition: var(--transition);
+            border-radius: 4px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+        }
+        .partner-box img { max-width: 100px; height: auto; filter: grayscale(1) invert(1); opacity: 0.6; transition: 0.4s; }
+        .partner-box:hover { border-color: var(--red); background: #000; }
+        .partner-box:hover img { filter: none; opacity: 1; transform: scale(1.1); }
 
-        @media (max-width: 1000px) {
+        /* --- FOOTER PREMIUM --- */
+        .footer-premium { background: #020202; border-top: 2px solid var(--red); padding: 80px 10% 40px; }
+        .footer-main-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; }
+        .footer-col h4 { font-family: 'Syncopate'; font-size: 0.75rem; color: var(--red); margin-bottom: 25px; letter-spacing: 2px; }
+        .footer-col p, .footer-col a { color: #888; text-decoration: none; font-size: 0.85rem; margin-bottom: 15px; display: block; transition: 0.3s; }
+        .footer-col a:hover { color: #fff; transform: translateX(5px); }
+        .footer-col i { color: var(--red); margin-right: 12px; width: 20px; }
+        
+        .map-box { 
+            height: 200px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            filter: grayscale(1) invert(0.9) contrast(1.2); 
+            border: 1px solid var(--light-gray); 
+        }
+
+        /* --- WHATSAPP --- */
+        .whatsapp-float { 
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            background: var(--whatsapp); color: #fff; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 30px; 
+            z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            transition: var(--transition); text-decoration: none; 
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); background: #20ba5a; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1100px) {
+            .nav-menu { display: none; }
             .footer-main-grid { grid-template-columns: 1fr 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 120px); }
-            .nav-menu, .flags { display: none; }
-            .hero-logo-large { width: 140px; }
+            section { padding: 60px 5%; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            .footer-main-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-logo-large { width: 120px; }
         }
     </style>
 </head>
@@ -237,8 +394,8 @@
 
     <header>
         <a href="#" class="logo-main">
-            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" width="55">
-            <div><span style="display: block; font-weight: bold; letter-spacing: 2px;">ARION TEAM</span></div>
+            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" class="logo-img" alt="Logo Arion Team">
+            <div><span style="display: block; font-weight: bold; letter-spacing: 2px; font-size: 0.9rem;">ARION TEAM</span></div>
         </a>
         <div class="nav-container">
             <ul class="nav-menu">
@@ -253,8 +410,8 @@
                 <li><a href="#contato">CONTATO</a></li>
             </ul>
             <div class="flags">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bandeira_da_Bahia.svg/250px-Bandeira_da_Bahia.svg.png">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" alt="Brasil">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bandeira_da_Bahia.svg/250px-Bandeira_da_Bahia.svg.png" alt="Bahia">
             </div>
         </div>
     </header>
@@ -262,9 +419,9 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" width="180">
+            <img src="https://github.com/brunoluissantos7-netizen/logo-pequena-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2015_42_25%20(2).png?raw=true" class="hero-logo-large" alt="Logo Grande Arion">
             <h1>A EXCELÊNCIA É O HÁBITO. <br> <span>A VITÓRIA É O DESTINO.</span></h1>
-            <a href="https://wa.me/5571983698558" style="background: var(--red); color: #fff; padding: 18px 50px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; border-radius: 2px; display: inline-block; letter-spacing: 3px; box-shadow: var(--glow);">INICIAR TREINOS</a>
+            <a href="https://wa.me/5571983698558" class="btn-main">INICIAR TREINOS</a>
         </div>
     </section>
 
@@ -276,7 +433,7 @@
         </div>
     </section>
 
-    <section id="video-treino" style="background: #000;">
+    <section id="video-treino">
         <h2 class="section-title">AS MODALIDADES DO <span>GUERREIRO</span></h2>
         <div class="video-container">
             <img src="https://github.com/brunoluissantos7-netizen/video-arion-team/blob/main/ChatGPT%20Image%2023%20de%20fev.%20de%202026,%2012_16_02.png?raw=true" alt="Modalidades Arion Team" class="featured-img">
@@ -290,106 +447,90 @@
             <div class="turno-card">
                 <h3><i class="fas fa-medal"></i> JIU-JITSU</h3>
                 <div class="aula-row">
-                    <span class="horario">19:30 - 21:00</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Adulto</span>
                         <span class="dias-aula">Seg • Qua • Sex</span>
                     </div>
+                    <span class="horario">19:30 - 21:00</span>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">15:00 - 16:30</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Adulto</span>
                         <span class="dias-aula">Ter • Qua • Qui</span>
                     </div>
+                    <span class="horario">15:00 - 16:30</span>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">18:10 - 19:30</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Kids (08 a 13 anos)</span>
                         <span class="dias-aula">Ter • Qui</span>
                     </div>
+                    <span class="horario">18:10 - 19:30</span>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">18:10 - 19:30</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Mirim (04 a 07 anos)</span>
                         <span class="dias-aula">Seg • Qua</span>
                     </div>
+                    <span class="horario">18:10 - 19:30</span>
                 </div>
             </div>
 
             <div class="turno-card">
                 <h3><i class="fas fa-fist-raised"></i> LUTAS</h3>
                 <div class="aula-row">
-                    <span class="horario">18:30 - 20:00</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Boxe</span>
                         <span class="dias-aula">Seg • Qua • Sex</span>
                     </div>
+                    <span class="horario">18:30 - 20:00</span>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">19:30 - 21:00</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Kickboxing</span>
                         <span class="dias-aula">Seg • Qua • Sex</span>
                     </div>
+                    <span class="horario">19:30 - 21:00</span>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">19:30 - 21:00</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Luta Livre</span>
                         <span class="dias-aula">Ter • Qui</span>
                     </div>
+                    <span class="horario">19:30 - 21:00</span>
                 </div>
             </div>
 
             <div class="turno-card">
                 <h3><i class="fas fa-user-ninja"></i> JUDÔ & HAPKIDO</h3>
                 <div class="aula-row">
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Judô Mirim</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
                     <span class="horario">16:00 - 17:00</span>
-                    <div class="desc-aula">
-                        <span class="tipo-aula">Judô Mirim (04-06 anos)</span>
-                        <span class="dias-aula">Ter • Qui</span>
-                    </div>
                 </div>
                 <div class="aula-row">
+                    <div class="desc-aula">
+                        <span class="tipo-aula">Judô Kids</span>
+                        <span class="dias-aula">Ter • Qui</span>
+                    </div>
                     <span class="horario">17:00 - 18:00</span>
-                    <div class="desc-aula">
-                        <span class="tipo-aula">Judô Kids (07-12 anos)</span>
-                        <span class="dias-aula">Ter • Qui</span>
-                    </div>
                 </div>
                 <div class="aula-row">
-                    <span class="horario">18:00 - 19:20</span>
-                    <div class="desc-aula">
-                        <span class="tipo-aula">Judô Adulto / +13 anos</span>
-                        <span class="dias-aula">Ter • Qui</span>
-                    </div>
-                </div>
-                <div class="aula-row" style="border-top: 1px solid #333; margin-top: 10px; padding-top: 20px;">
-                    <span class="horario">18:30 - 19:30</span>
-                    <div class="desc-aula">
-                        <span class="tipo-aula">Hapkido Kids</span>
-                        <span class="dias-aula">Ter • Qui</span>
-                    </div>
-                </div>
-                <div class="aula-row">
-                    <span class="horario">19:30 - 20:30</span>
                     <div class="desc-aula">
                         <span class="tipo-aula">Hapkido Adulto</span>
                         <span class="dias-aula">Ter • Qui</span>
                     </div>
+                    <span class="horario">19:30 - 20:30</span>
                 </div>
             </div>
-
         </div>
     </section>
 
     <section id="planos" style="background: #080808;">
         <h2 class="section-title">PLANOS DE <span>BATALHA</span></h2>
         <div class="pricing-grid">
-            
             <div class="pricing-card featured">
                 <div class="badge">FOCO</div>
                 <h3>MODALIDADES ADULTO/KIDS</h3>
@@ -398,12 +539,11 @@
                     <li><span><i class="fas fa-fist-raised"></i> Boxe</span> <strong>R$ 80,00</strong></li>
                     <li><span><i class="fas fa-bolt"></i> Kickboxing</span> <strong>R$ 80,00</strong></li>
                     <li><span><i class="fas fa-medal"></i> Judô</span> <strong>R$ 100,00</strong></li>
-                    <li><span><i class="fas fa-medal"></i> Judô/Sábado (15h30 ás 17h)</span> <strong>R$ 60,00</strong></li>
+                    <li><span><i class="fas fa-medal"></i> Judô (Sábado)</span> <strong>R$ 60,00</strong></li>
                     <li><span><i class="fas fa-user-ninja"></i> Hapkido</span> <strong>R$ 100,00</strong></li>
                 </ul>
-                <a href="https://wa.me/5571983698558" style="background: var(--red); color: #fff; padding: 15px 25px; text-decoration: none; font-family: 'Syncopate'; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-top: 10px; letter-spacing: 2px;">ALISTAR-SE</a>
+                <a href="https://wa.me/5571983698558" class="btn-main" style="width: 100%; padding: 15px;">ALISTAR-SE</a>
             </div>
-
         </div>
     </section>
 
@@ -437,7 +577,7 @@
         <h2 class="section-title">MISSÃO <span>DIÁRIA</span></h2>
         <div class="calendars-wrapper">
             <div class="calendar-live">
-                <p style="color: var(--red); font-family: 'Syncopate'; font-size: 0.7rem; margin-bottom: 20px; text-align: center;">FEVEREIRO 2026</p>
+                <p style="color: var(--red); font-family: 'Syncopate'; font-size: 0.7rem; margin-bottom: 25px; text-align: center;">FEVEREIRO 2026</p>
                 <div class="days-grid">
                     <div class="day">D</div><div class="day">S</div><div class="day">T</div><div class="day">Q</div><div class="day">Q</div><div class="day">S</div><div class="day">S</div>
                     <div class="day active">15</div><div class="day active">16</div><div class="day active">17</div><div class="day active">18</div><div class="day active">19</div>
@@ -445,10 +585,10 @@
                 </div>
             </div>
             <div>
-                <div class="event-row"><div><strong>FEV</strong> - COPA VERÃO</div><span style="color: #25d366;">OURO</span></div>
-                <div class="event-row"><div><strong>MAR</strong> - OPEN SALVADOR</div><span style="color: var(--red);">MISSÃO</span></div>
-                 <div class="event-row"><div><strong>ABRIL</strong> - COPA SALVADOR</div><span style="color: #25d366;">PRATA</span></div>
-                 <div class="event-row"><div><strong>ABRIL</strong> - COPA NORDESTE</div><span style="color: #25d366;">PRATA</span></div>
+                <div class="event-row"><div><strong>FEV</strong> - COPA VERÃO</div><span style="color: #25d366; font-weight: bold;">OURO</span></div>
+                <div class="event-row"><div><strong>MAR</strong> - OPEN SALVADOR</div><span style="color: var(--red); font-weight: bold;">MISSÃO</span></div>
+                <div class="event-row"><div><strong>ABRIL</strong> - COPA SALVADOR</div><span style="color: #25d366; font-weight: bold;">PRATA</span></div>
+                <div class="event-row"><div><strong>ABRIL</strong> - COPA NORDESTE</div><span style="color: #25d366; font-weight: bold;">PRATA</span></div>
             </div>
         </div>
     </section>
@@ -468,15 +608,15 @@
         <h2 class="section-title">PARCEIROS <span>DA EQUIPE</span></h2>
         <div class="partners-grid">
             <div class="partner-box">
-                <img src="https://github.com/arionteamjiuba-spec/logo-1/blob/main/ChatGPT_Image_23_de_fev._de_2026__16_44_04-removebg-preview.png?raw=true" alt="Logo Armor Fightwear">
+                <img src="https://github.com/arionteamjiuba-spec/logo-1/blob/main/ChatGPT_Image_23_de_fev._de_2026__16_44_04-removebg-preview.png?raw=true" alt="Divino Sushi">
                 DIVINO SUSHI
             </div>
             <div class="partner-box">
-                <img src="https://github.com/arionteamjiuba-spec/parceiro-2/blob/main/Logomarca%20Cantim%20Branca.png?raw=true" alt="Logo Max Muscle">
+                <img src="https://github.com/arionteamjiuba-spec/parceiro-2/blob/main/Logomarca%20Cantim%20Branca.png?raw=true" alt="Cantim da Roça">
                 CANTIM DA ROÇA
             </div>
             <div class="partner-box">
-                <img src="https://github.com/arionteamjiuba-spec/PARCEIRO-3/blob/main/Logo_do_Centro_Educacional_Silva_N%C3%A9ry-removebg-preview.png?raw=true" alt="Logo Sangue BJJ">
+                <img src="https://github.com/arionteamjiuba-spec/PARCEIRO-3/blob/main/Logo_do_Centro_Educacional_Silva_N%C3%A9ry-removebg-preview.png?raw=true" alt="Silva Nery">
                 CENTRO EDUCACIONAL SILVA NÉRY
             </div>
         </div>
@@ -486,10 +626,10 @@
         <div class="footer-main-grid">
             <div class="footer-col">
                 <h4>ARION TEAM BJJ</h4>
-                <p>📍| Av. Rivaldo Gomes Guimarães, 653 - Nucleo Hab. Rubens Costa Cia I, Simões Filho - BA. Formando campeões.</p>
-                <div style="margin-top: 20px;">
-                    <a href="https://www.facebook.com/profile.php?id=100069380591565"><i class="fab fa-facebook"></i> Facebook</a>
-                    <a href="https://www.instagram.com/arionteam_bahia/"><i class="fab fa-instagram"></i> Instagram</a>
+                <p>📍| Av. Rivaldo Gomes Guimarães, 653 - Simões Filho - BA. Formando campeões.</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="https://www.facebook.com/profile.php?id=100069380591565"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/arionteam_bahia/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -502,12 +642,12 @@
             </div>
             <div class="footer-col">
                 <div class="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.1234!2d-38.4000!3d-12.7800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQ2JzQ4LjAiUyAzOMKwMjQnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.355146051515!2d-38.4014!3d-12.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQ4JzAwLjAiUyAzOMKwMjQnMDQuOCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; padding-top: 30px; color: #444; font-size: 0.7rem; font-family: 'Syncopate';">
-            OSS! © 2026 ARION TEAM - DESIGNED BRUNO LUIS
+        <div style="text-align: center; padding-top: 50px; color: #444; font-size: 0.65rem; font-family: 'Syncopate'; letter-spacing: 2px;">
+            OSS! © 2026 ARION TEAM - DESIGNED BY BRUNO LUIS
         </div>
     </footer>
 
